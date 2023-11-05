@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Hanjie Solver</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=no" />
+		<script src="https://cdn.jsdelivr.net/npm/clingo-wasm@0.1.1"></script>
+		<script src="index.js"></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Nonogram Solver</h1>
+		<table>
+			<tr>
+				<th class="result"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+				<th class="top"></th>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<th class="left"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		</table>
+		<h2>Legend</h2>
+		<ul>
+			<li><span class="cell filled"></span> Filled in every solution</li>
+			<li><span class="cell"></span> Empty in every solution</li>
+			<li><span class="cell filled err"></span> Filled in this solution, empty in others</li>
+			<li><span class="cell err"></span> Empty in this solution, filled in others</li>
+		</ul>
+		<h2>Instructions</h2>
+		<p>
+			Click the grid cells to change the puzzle. The solver will tell you whether your puzzle is solvable (ie. has one solution) or unsolvable (has two or more solutions).
+			If the puzzle is not solvable it will highlight the parts that are ambiguous. Copy the URL to share with others.
+		</p>
+
+		<script>initialize()</script>
+	</body>
+</html>
