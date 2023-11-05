@@ -59,15 +59,29 @@ cell(X, Y) :- row_mark(X, Y), col_mark(X, Y).
 }
 
 function readPuzzleFromUrl() {
-	if (window.location.hash && window.location.hash.match(/^#[01]{150}$/)) {
+	if (!window.location.hash) {
+		return createZeroArray()
+	}
+	const hash = window.location.hash;
+	if (hash.length === 151 && hash.match(/^#[01]{150}$/)) {
 		return window.location.hash.slice(1).split('').map(n=>+n);
 	}
 	const puzzle = createZeroArray()
-	if (window.location.hash && window.location.hash.match(/^#[0-7]{50}$/)) {
-		window.location.hash.slice(1).split('').forEach((l, i) => {
+	if (hash.length === 51 && hash.match(/^#[0-7]{50}$/)) {
+		hash.slice(1).split('').forEach((l, i) => {
 				puzzle[i * 3] = +l & 1;
 				puzzle[i * 3 + 1] = (l >> 1) & 1;
 				puzzle[i * 3 + 2] = (l >> 2) & 1;
+		})
+	}
+	if (hash.length === 39 && hash.match(/^#[0-9a-f]{38}$/)) {
+		hash.slice(1).split('').map(l=>Number.parseInt(l, 16)).forEach((l, i) => {
+				puzzle[i * 4] = l & 1;
+				puzzle[i * 4 + 1] = (l >> 1) & 1;
+				if (i < 148) {
+					puzzle[i * 4 + 2] = (l >> 2) & 1;
+					puzzle[i * 4 + 3] = (l >> 3) & 1;
+				}
 		})
 	}
 	return puzzle
@@ -75,8 +89,8 @@ function readPuzzleFromUrl() {
 
 function updatePuzzleInUrl() {
 	let hash = '#';
-	for(let i = 0; i < 150; i += 3) {
-		hash += cells[i] | (cells[i + 1] << 1) | (cells[i + 2] << 2);
+	for(let i = 0; i < 150; i += 4) {
+		hash += (cells[i] | (cells[i + 1] << 1) | (cells[i + 2] << 2) | (cells[i + 3] << 3)).toString(16);
 	}
 	history.replaceState(null, null, hash);
 }
